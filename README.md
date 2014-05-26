@@ -1,12 +1,12 @@
-user mang
+chat app
 =========
-practice SPA using backbone
+practice SPA using backbone, socket io for chats
 
 HOW TO
 ------
-* to pull in deps:  `bower install && npm install`
-* to run db:  `mongod -f mongod.conf` (from the db dir)
-* to run:  `node server.js` 
-    or `npm start` (maybe)
+* pull in deps:  `bower install && npm install`
+* run db:  `mkdir mongodb; mongod -f mongod.conf` (from the db dir)
+* run:  `node server.js` 
+   or `npm start` (maybe)
 
 then visit http://localhost:7000

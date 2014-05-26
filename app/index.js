@@ -5,8 +5,8 @@ var cookieParser = require('cookie-parser');
 var io = require('socket.io');
 
 var app = express();
-var api = require('./app/api');
-var session = require('./app/session');
+var api = require('./api');
+var session = require('./session');
 
 var port = 7000;
 

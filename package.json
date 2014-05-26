@@ -2,7 +2,7 @@
   "name": "chat",
   "version": "0.0.1",
   "description": "chat app",
-  "main": "index.js",
+  "main": "./app/index.js",
   "dependencies": {
     "body-parser": "~1.0.2",
     "express": "~4.0.0",
@@ -13,7 +13,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node ./app/index.js"
   },
   "repository": {
     "type": "git",
