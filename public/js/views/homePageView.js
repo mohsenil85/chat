@@ -6,6 +6,7 @@ define(function(require){
   _         = require('underscore'),
   Backbone  = require( 'backbone'),
   homePage  = require('text!../templates/homePageTemplate.html'),
+  session  = require('models/session'),
   signIn  = require('text!../templates/signIn.html')
 
   var HomePageView = Backbone.View.extend({
@@ -16,7 +17,7 @@ define(function(require){
     },
 
     render: function (){
-      if (!this.options.session.get('loggedIn')){
+      if (this.options.session.get('loggedIn')){
         var template = _.template($(homePage).html())
         this.$el.html(template);
       } else {
@@ -26,13 +27,17 @@ define(function(require){
     },
 
     events:{
-      'click .view-users' : 'viewUsers',
-      'click .new-user' : 'newUser'
+      'click .signIn' : 'login',
+      'click .logout' : 'logout'
     },
-    viewUsers : function(){
-      this.options.router.navigate('/userlist', {trigger: true});
+    login : function(){
+      console.log('about to save....')
+      session.save({
+      userName: $('#userName').val(),
+      password: $('#password').val()
+      });
     },
-    newUser : function(){
+    logout : function(){
       this.options.router.navigate('/new', {trigger: true});
     }
   });

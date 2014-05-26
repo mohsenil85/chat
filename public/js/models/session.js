@@ -13,7 +13,10 @@ define(function(require){
    },
     urlRoot : 'http://localhost:7000/session',
     login: function(creds){
-      this.save(creds);
+      console.log(creds);
+      this.save(creds).success(function(){
+        console.log('saved..');
+      });
     },
     logout: function(creds){
       this.destroy({
