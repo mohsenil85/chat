@@ -131,4 +131,5 @@ router.route('/auth/:userName')
 //app.use('/api', router);
 //app.listen(port);
 module.exports = connection; 
+module.exports = UserSchema;
 module.exports = router;
