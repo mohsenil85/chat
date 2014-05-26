@@ -5,44 +5,11 @@ var cookieParser = require('cookie-parser');
 var router = express.Router();
 
 
-var connection = mongoose.connect('mongodb://localhost/api');
+var connection = require('./db').connection;
 var Schema = mongoose.Schema;
 
-var UserSchema = new Schema({
-  email: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  firstName: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  lastName: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  age: {
-    type: Number,
-    required: false
-  },
-   date: { 
-     type: Date,
-     default: Date.now 
-   },
-   userName:{
-    type: String,
-    required: true,
-    trim: true
-   },
-   password : {
-     type: String
-   }
-});
-
-var User = mongoose.model('User', UserSchema);
+var UserSchema = require('./db').UserSchema;
+var User = require('./db').User;
 
 router.use(function(req, res, next){
   console.log(req.method + " :  " + req.url);
@@ -108,28 +75,4 @@ router.route('/users/:id')
     });
   });
     
-router.route('/auth/:userName')
-  .post(function(req, res){
-    User.findOne({
-      userName: req.body.userName, 
-      password: req.body.password
-    }, function(err, user){
-      if(user){
-        var editPath = '/#/edit/' + user.id + '/';
-        var editPath = '/#/edit/' + user.id + '/';
-        console.log(editPath);
-        res.clearCookie('id')
-        //res.cookie('id', user.id, { path: editPath, httpOnly: false});
-        res.cookie('id', user.id)
-        res.send(200)
-      } else {
-        res.send(401)
-      }
-    });
-  });
-
-//app.use('/api', router);
-//app.listen(port);
-module.exports = connection; 
-module.exports = UserSchema;
 module.exports = router;

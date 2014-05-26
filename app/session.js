@@ -1,13 +1,11 @@
 var express = require('express');
-var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var router = express.Router();
 
-var connection = require('./api');
-var UserSchema = require('./api');
-
-var User = mongoose.model('User', UserSchema);
+var connection = require('./db').connection;
+var UserSchema = require('./db').UserSchema;
+var User = require('./db').User;
 
 router.route('/')
   .post(function(req, res){
