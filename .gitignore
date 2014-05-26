@@ -1,0 +1,6 @@
+*.swp
+node_modules/*
+db/mongodb/
+db/mongodb.log
+public/bower_components
+

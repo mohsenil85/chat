@@ -1,0 +1,54 @@
+<script  id='user-view-template' type='text/template'>
+  <div class=container>
+    <% if (user) { %>
+    <h4>Welcome to the profile page</h4>
+    <p>You are viewing the profile of <%= user.get('userName') %> </p>
+    <% console.log(user) %>
+    <% console.log(user.attributes.firstName) %>
+    <hr />
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Name</h3>
+      </div>
+      <div class="panel-body">
+        <%=user.get('firstName')  %> <%=user.get('lastName')  %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Age</h3>
+      </div>
+      <div class="panel-body">
+        <%=user.get('age')   %> 
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Email</h3>
+      </div>
+      <div class="panel-body">
+        <%=user.get('email')   %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">UID</h3>
+      </div>
+      <div class="panel-body">
+        <%=user.get('id')   %> 
+      </div>
+    </div>
+    <button type= "button" class="btn btn-info edit-user-button ">Edit</button>
+
+<!--
+//    <% } else { %>
+    -->
+    <p class="bg-warning"> that user does not exist </p>
+    <% };  %>
+    <hr />
+    <div class="btn-group">
+    <button type= "button" class="btn view-users ">View Users</button>
+    <button type= "button" class="btn new-user ">Create User</button>
+    </div>
+  </div>
+</script>
