@@ -13,11 +13,13 @@ var port = 7000;
 app.use(bodyParser());
 app.use(cookieParser());
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + './../public'));
  
 app.use('/api', api);
 app.use('/session', session);
 //app.listen(port);
+
+app.listen(port);
 
 var io = io.listen(app.listen(port));
 
@@ -29,4 +31,3 @@ io.sockets.on('connection', function(socket){
     //io.sockets.emit('message', data)
   });
 });
-

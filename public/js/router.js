@@ -5,13 +5,14 @@ define(function(require){
   var $             = require('jquery'),
   _                 = require('underscore'),
   Backbone          = require('backbone'),
+  session           = require('models/session'),
   HomePageView      = require('views/homePageView'),
   HeaderView        = require('views/headerView'),
   FooterView        = require('views/footerView')
 
   var MainRouter = Backbone.Router.extend({
     routes: {
-      '' : 'home',
+      '' : 'home'
     }
   });
   var initialize = function(){
@@ -24,7 +25,7 @@ define(function(require){
 
     var router = new MainRouter();
     var homePageView = new HomePageView({
-      router: router
+      session: session
     });
     router.on('route:home', function(){
       homePageView.render();

@@ -22,7 +22,13 @@ define(function(require){
           model.id = null;
         }
       })
+    },
+    getAuth: function(callback){
+      this.fetch({
+        success: callback 
+      })
     }
   });
-  return SessionModel;
+  //why returning a new model??
+  return new SessionModel;
 });

@@ -5,7 +5,7 @@ define(function (require) {
   var $             = require('jquery'),
       _             = require('underscore'),
       Backbone      = require('backbone'),
-      router    = require('router')
+      router        = require('router')
 
     var initialize = function(){
       router.initialize();
