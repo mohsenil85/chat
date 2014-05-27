@@ -17,12 +17,13 @@ define(function(require){
     },
 
     render: function (){
-      if (this.options.session.get('loggedIn')){
+      if (session.get('loggedIn')){
         var template = _.template($(homePage).html())
         this.$el.html(template);
       } else {
         var template = _.template($(signIn).html())
         this.$el.html(template);
+//        this.options.router.navaigate('', {trigger: true});
       }
     },
 
@@ -32,10 +33,11 @@ define(function(require){
     },
     login : function(){
       console.log('about to save....')
-      session.save({
+      session.login({
       userName: $('#userName').val(),
       password: $('#password').val()
       });
+      this.render();
     },
     logout : function(){
       this.options.router.navigate('/new', {trigger: true});

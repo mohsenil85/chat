@@ -9,6 +9,7 @@ var User = require('./db').User;
 
 router.route('/')
   .post(function(req, res){
+    console.log(req.body);
     User.findOne({
       userName: req.body.userName, 
       password: req.body.password

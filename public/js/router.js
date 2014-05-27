@@ -25,9 +25,10 @@ define(function(require){
 
     var router = new MainRouter();
     var homePageView = new HomePageView({
+      router: router,
       session: session
     });
-    router.on('route:home', function(){
+   router.on('route:home', function(){
       homePageView.render();
     })
 

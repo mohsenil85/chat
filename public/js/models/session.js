@@ -13,9 +13,15 @@ define(function(require){
    },
     urlRoot : 'http://localhost:7000/session',
     login: function(creds){
-      console.log(creds);
-      this.save(creds).success(function(){
-        console.log('saved..');
+      var that = this;
+      this.save(creds, {
+        error: function(model, response){
+         if (response.status == 200){
+           that.set({'loggedIn': true});
+           console.log(that);
+         } 
+        }
+
       });
     },
     logout: function(creds){
