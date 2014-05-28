@@ -7,12 +7,14 @@ define(function(require){
   Backbone          = require('backbone'),
   session           = require('models/session'),
   HomePageView      = require('views/homePageView'),
+  EditUserView      = require( 'views/editUserView'),
   HeaderView        = require('views/headerView'),
   FooterView        = require('views/footerView')
 
   var MainRouter = Backbone.Router.extend({
     routes: {
-      '' : 'home'
+      '' : 'home',
+      'new' :'editUser'
     }
   });
   var initialize = function(){
@@ -24,10 +26,17 @@ define(function(require){
     $('.footer').html(this.footerView.render());
 
     var router = new MainRouter();
+    var editUserView = new EditUserView({
+      router: router,
+      session: session
+    });
     var homePageView = new HomePageView({
       router: router,
       session: session
     });
+   router.on('route:editUser', function(){
+      editUserView.render();
+    })
    router.on('route:home', function(){
       homePageView.render();
     })

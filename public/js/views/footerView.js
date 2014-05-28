@@ -5,7 +5,7 @@ define(function(require){
   var $     = require('jquery'),
   _         = require('underscore'),
   Backbone  = require( 'backbone'),
-  footer    = require('text!../templates/footer.html')
+  footer    = require('text!../../templates/footer.html')
 
   var FooterView = Backbone.View.extend({
     el: '.footer',

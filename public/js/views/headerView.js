@@ -5,7 +5,7 @@ define(function(require){
   var $     = require('jquery'),
   _         = require('underscore'),
   Backbone  = require( 'backbone'),
-  header    = require('text!../templates/header.html')
+  header    = require('text!../../templates/header.html')
 
   var HeaderView = Backbone.View.extend({
     el: '.header',

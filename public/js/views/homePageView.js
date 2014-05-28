@@ -5,9 +5,9 @@ define(function(require){
   var $     = require('jquery'),
   _         = require('underscore'),
   Backbone  = require( 'backbone'),
-  homePage  = require('text!../templates/homePageTemplate.html'),
+  homePage  = require('text!../../templates/homePageTemplate.html'),
   session  = require('models/session'),
-  signIn  = require('text!../templates/signIn.html')
+  signIn  = require('text!../../templates/signIn.html')
 
   var HomePageView = Backbone.View.extend({
     el: '.page',
@@ -17,7 +17,8 @@ define(function(require){
     },
 
     render: function (){
-      if (session.get('loggedIn')){
+        console.log(this.options);
+      if (user.get('session')){
         var template = _.template($(homePage).html())
         this.$el.html(template);
       } else {
