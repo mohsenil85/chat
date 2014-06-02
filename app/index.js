@@ -1,5 +1,4 @@
 var express = require('express');
-//var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -7,6 +6,7 @@ var io = require('socket.io');
 
 var app = express();
 var api = require('./api');
+//var chat = require('./chat');
 var session = require('./session');
 
 var port = 7000;
@@ -21,11 +21,8 @@ app.use(express.static(__dirname + './../public'));
  
 //app.listen(port);
 
-app.listen(port);
+var io = io.listen(app.listen(port));
 
-//var io = io.listen(app.listen(port));
-
-/*
 io.sockets.on('connection', function(socket){
   socket.emit('message', {message: 'welcome to chat'});
   socket.on('send', function(data){
@@ -34,4 +31,3 @@ io.sockets.on('connection', function(socket){
     //io.sockets.emit('message', data)
   });
 });
-*/

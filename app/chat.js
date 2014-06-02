@@ -9,3 +9,5 @@ io.sockets.on('connection', function(socket){
   });
 });
 
+
+module.exports = io;
