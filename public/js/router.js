@@ -5,16 +5,18 @@ define(function(require){
   var $             = require('jquery'),
   _                 = require('underscore'),
   Backbone          = require('backbone'),
-  session           = require('models/session'),
   HomePageView      = require('views/homePageView'),
   EditUserView      = require( 'views/editUserView'),
+  SignInView        = require( 'views/signInView'),
   HeaderView        = require('views/headerView'),
   FooterView        = require('views/footerView')
+
 
   var MainRouter = Backbone.Router.extend({
     routes: {
       '' : 'home',
-      'new' :'editUser'
+      'new' :'editUser',
+      'auth' :'authUser'
     }
   });
   var initialize = function(){
@@ -26,23 +28,26 @@ define(function(require){
     $('.footer').html(this.footerView.render());
 
     var router = new MainRouter();
+    var signInView = new SignInView({
+      router: router
+    });
     var editUserView = new EditUserView({
-      router: router,
-      session: session
+      router: router
     });
     var homePageView = new HomePageView({
-      router: router,
-      session: session
+      router: router
     });
+
    router.on('route:editUser', function(){
       editUserView.render();
     })
    router.on('route:home', function(){
       homePageView.render();
     })
+   router.on('route:authUser', function(){
+      signInView.render();
+    })
 
-
-    Backbone.history.start();
   };
   return {
     initialize: initialize

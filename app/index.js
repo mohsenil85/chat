@@ -15,10 +15,10 @@ app.use(bodyParser());
 app.use(cookieParser());
 app.use(logger('dev'));
 
-app.use(express.static(__dirname + './../public'));
- 
 app.use('/api', api);
 app.use('/session', session);
+app.use(express.static(__dirname + './../public'));
+ 
 //app.listen(port);
 
 app.listen(port);

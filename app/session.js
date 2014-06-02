@@ -8,6 +8,9 @@ var UserSchema = require('./db').UserSchema;
 var User = require('./db').User;
 
 router.route('/')
+.get(function(req, res){
+    res.send(200);
+})
 .post(function(req, res){
     console.log(req.body);
     User.findOne({

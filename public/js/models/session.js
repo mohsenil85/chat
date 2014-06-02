@@ -2,7 +2,7 @@ define(function(require){
     "use strict";
     var _ = require( 'underscore'),
     Backbone = require( 'backbone'),
-    UserModel = require( 'models/userModel')
+    cookie = require( 'cookie')
 
     var SessionModel = Backbone.Model.extend({
         initialize : function(options){
@@ -12,14 +12,10 @@ define(function(require){
         urlRoot : 'http://localhost:7000/session',
         login: function(creds){
             var that = this;
-            this.save(creds, {
-                error: function(model, response){
-                    if (response.status == 200){
-                        console.log(that);
-                    } 
-                }
-
-            });
+            this.save(creds)
+            .error(
+                function(){ console.log('hi') }
+            );
         },
         logout: function(creds){
             this.destroy({
@@ -36,5 +32,5 @@ define(function(require){
         }
     });
     //why returning a new model??
-    return new SessionModel;
+    return SessionModel;
 });

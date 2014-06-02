@@ -6,7 +6,7 @@ define(function(require){
   _         = require('underscore'),
   Backbone  = require( 'backbone'),
   homePage  = require('text!../../templates/homePageTemplate.html'),
-  session  = require('models/session'),
+  cookie = require('cookie'),
   signIn  = require('text!../../templates/signIn.html')
 
   var HomePageView = Backbone.View.extend({
@@ -18,7 +18,7 @@ define(function(require){
 
     render: function (){
         console.log(this.options);
-      if (user.get('session')){
+        if($.cookie('id')){
         var template = _.template($(homePage).html())
         this.$el.html(template);
       } else {
