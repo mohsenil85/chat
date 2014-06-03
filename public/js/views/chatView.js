@@ -50,7 +50,8 @@ define(function(require){
     },
     recvChat: function(ev){
       console.log('recvChat');
-      console.log(this.chat);
+      console.log('&&&&&&&&&');
+      console.log(this.chat.messages.pop());
     }
 
   });
