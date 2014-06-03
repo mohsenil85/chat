@@ -13,11 +13,17 @@ define(function(require){
         console.log('message');
         console.log(data);
       });
+      this.socket.on('chatBack', function(data){
+        messages.push(data);
+      });
 
       this.socket.on('send', function(data){
         console.log('send');
         console.log(data);
       });
+    },
+    display : function(data){
+        console.log(data);
     },
     message : function(){
 
@@ -25,8 +31,12 @@ define(function(require){
         console.log(data);
       })
     },
-    send : function(){
-      this.socket.emit('send',  {hello:"world "});
+    send : function(uName, msg){
+        var message = {
+            name : uName,
+            mesg : msg
+        };
+      this.socket.emit('send',  message);
     },
     test: function(){
       console.log('test');

@@ -30,8 +30,5 @@
     "jquery-serialize-object": "~2.2.0",
     "jquery-cookie": "~1.4.1",
     "socket.io-client": "~1.0.3"
-  },
-  "resolutions": {
-    "socket.io-client": "~1.0.3"
   }
 }

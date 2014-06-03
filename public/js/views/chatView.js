@@ -25,10 +25,8 @@ define(function(require){
     },
 
     render : function(options){
-      console.log(this);
       var that = this; 
       var id = $.cookie('id');
-
       if(id){
         that.user = new UserModel({id: id });
         that.user.fetch({
@@ -45,17 +43,14 @@ define(function(require){
     },
 
     sendChat: function(ev){
-      console.log(this);
       console.log('sendChat');
-      //var chat = new ChatModel();
-      var msg = $.('#chat-input').val();
-      console.log(msg);
-      this.chat.send();
+      var msg = $('#chat-input').val();
+      var uName = this.user.get('userName');
+      this.chat.send(uName, msg);
     },
     recvChat: function(ev){
-      var chat = new ChatModel();
       console.log('recvChat');
-      this.chat.message();
+      console.log(this.chat);
     }
 
   });
