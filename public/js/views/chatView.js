@@ -15,7 +15,7 @@ define(function(require){
   var ChatView = Backbone.View.extend({
     initialize : function(options){
       this.options = options || {};
-      var chat = new ChatModel();
+      this.chat = new ChatModel();
     },
     el: '.page',
 
@@ -27,44 +27,35 @@ define(function(require){
     render : function(options){
       console.log(this);
       var that = this; 
-      var signedIn = true;
+      var id = $.cookie('id');
 
-      if(signedIn){
-        that.user = new UserModel({id: $.cookie('id') });
+      if(id){
+        that.user = new UserModel({id: id });
         that.user.fetch({
           success: function(user){
             var template = _.template($(ChatTemplate).html(),
                                       {user: user});
                                       that.$el.html(template);
-          },
-          error : function(){
-            console.log('auth failed');
-            this.options.router.navigate('', {trigger: true});
           }
         })
       } else {
-
         console.log('other branch hit');
-        Backbone.history.navigate('/auth/', {trigger: true});
+        this.options.router.navigate('', {trigger: true});
       } 
     },
 
     sendChat: function(ev){
       console.log(this);
       console.log('sendChat');
-      var chat = new ChatModel();
-      chat.send();
-      chat.message();
-      chat.socket.emit('send', { my: 'data' });
+      //var chat = new ChatModel();
+      var msg = $.('#chat-input').val();
+      console.log(msg);
+      this.chat.send();
     },
     recvChat: function(ev){
+      var chat = new ChatModel();
       console.log('recvChat');
-      this.chat.socket.on('message', function(data){
-        console.log(data);
-      });
-      this.chat.socket.on('thing', function(data){
-        console.log('got:' + data);
-      });
+      this.chat.message();
     }
 
   });
