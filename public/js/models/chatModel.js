@@ -17,6 +17,7 @@ define(function(require){
       });
       this.socket.on('chatBack', function(data){
         that.messages.push(data);
+        console.log(data);
       });
 
       this.socket.on('send', function(data){

@@ -9,6 +9,7 @@ define(function(require){
     EditUserView      = require( 'views/editUserView'),
     SignInView        = require( 'views/signInView'),
     ChatView          = require( 'views/chatView'),
+    Chat          = require( 'models/chatModel'),
     HeaderView        = require('views/headerView'),
     FooterView        = require('views/footerView')
 
@@ -31,6 +32,7 @@ define(function(require){
         $('.footer').html(this.footerView.render());
 
         var router = new MainRouter();
+        var chat = new Chat();
 
         router.on('route:editUser', function(){
             var editUserView = new EditUserView({
@@ -52,7 +54,8 @@ define(function(require){
         })
         router.on('route:userChat', function(){
             var chatView = new ChatView({
-                router: router
+                router: router,
+                chat : chat
             });
             chatView.render();
         })

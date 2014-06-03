@@ -7,7 +7,8 @@ define(function (require) {
     Backbone      = require('backbone'),
     cookie        = require('cookie'),
     router        = require('router'),
-    UserModel          = require('models/userModel')
+    UserModel          = require('models/userModel'),
+    Chat          = require('models/chatModel')
 
     var initialize = function(){
         router.initialize();

@@ -7,7 +7,7 @@ var io = require('socket.io');
 
 var app = express();
 var api = require('./api');
-//var chat = require('./chat');
+///var chat = require('./chat');
 var session = require('./session');
 
 var port = 7000;
@@ -25,11 +25,18 @@ app.use(express.static(__dirname + './../public'));
 
 var io = io.listen(app.listen(port));
 
+var that = this;
+
+
 io.on('connection', function(socket){
     socket.emit('message', {message: 'welcome to chat'});
     socket.on('send', function(data){
+        var messages = [];
+        messages.push(data);
         socket.emit('chatBack', data );
         console.log(data);
         //io.sockets.emit('message', data)
     });
 });
+
+

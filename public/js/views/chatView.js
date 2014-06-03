@@ -15,7 +15,7 @@ define(function(require){
   var ChatView = Backbone.View.extend({
     initialize : function(options){
       this.options = options || {};
-      this.chat = new ChatModel();
+      this.chat = this.options.chat;
     },
     el: '.page',
 
