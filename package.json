@@ -19,12 +19,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mohsenil85/apis.git"
+    "url": "https://github.com/mohsenil85/chat.git"
   },
   "author": "lmohseni",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mohsenil85/apis/issues"
+    "url": "https://github.com/mohsenil85/chat/issues"
   },
-  "homepage": "https://github.com/mohsenil85/apis"
+  "homepage": "https://github.com/mohsenil85/chat"
 }
